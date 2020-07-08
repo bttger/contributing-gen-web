@@ -108,3 +108,6 @@ dist
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
+
+# IntelliJ IDEA
+.idea
