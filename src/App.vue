@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <Header />
-    <div class="grid">
-      <Configurator />
-      <MarkdownOutput />
+    <div class="center grid">
+      <vs-row>
+        <Configurator />
+        <MarkdownOutput />
+      </vs-row>
     </div>
     <Footer />
   </div>
@@ -12,8 +14,7 @@
 <script>
 import Header from "./components/Header.vue";
 import Configurator from "@/components/Configurator.vue";
-import MarkdownOutput from '@/components/MarkdownOutput.vue';
-import Footer from '@/components/Footer.vue';
+import MarkdownOutput from "@/components/MarkdownOutput.vue";
 
 import dot from "dot/doT";
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
@@ -24,8 +25,7 @@ export default {
   components: {
     Header,
     Configurator,
-    MarkdownOutput,
-    Footer
+    MarkdownOutput
   },
   data() {
     return {
@@ -67,6 +67,5 @@ export default {
   text-align: center;
   color: #d6d6d6;
   margin-top: 60px;
-  background-color: rgb(2, 59, 92);
 }
 </style>

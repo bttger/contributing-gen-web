@@ -1,12 +1,12 @@
 <template>
   <div class="center navbar">
-      <vs-navbar center-collapsed v-model="active" :dark=true>
+      <vs-navbar center-collapsed :dark=true>
         <template #left>
           <img src="/logo.png" alt="">
           <h4>contributing-gen</h4>
         </template>
         <template #right>
-          <vs-button @click="openGithubRepo">Contribute</vs-button>
+          <vs-button flat active @click="openGithubRepo">Contribute</vs-button>
         </template>
       </vs-navbar>
     </div>
@@ -14,9 +14,6 @@
 
 <script>
 export default {
-  data: () => ({
-    active: "guide"
-  }),
   methods: {
       openGithubRepo() {
           window.open("https://github.com/bttger/contributing-gen", "_blank")

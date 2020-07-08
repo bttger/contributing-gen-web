@@ -1,7 +1,7 @@
 <template>
-  <div>
-      <p>This is my markdown output</p>
-  </div>
+  <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+      This is the output area
+  </vs-col>
 </template>
 
 <script>
