@@ -1,11 +1,14 @@
 <template>
-  <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
-    <vs-row>
-      <vs-col vs-type="flex" vs-justify="right" vs-align="center" w="12">
-        <vs-button flat active @click="generate">Active</vs-button>
-      </vs-col>
-    </vs-row>
-  </vs-col>
+  <div id="configurator">
+    <div id="buttons">
+      <vs-button flat active @click="generate">Generate</vs-button>
+    </div>
+    <div id="specification">
+      <p>sdsdf</p>
+      <p>sdfsdf</p>
+      This wont show
+    </div>
+  </div>
 </template>
 
 <script>

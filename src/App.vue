@@ -3,8 +3,12 @@
     <Header />
     <div class="center grid">
       <vs-row>
-        <Configurator />
-        <MarkdownOutput />
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+          <Configurator />
+        </vs-col>
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+          <MarkdownOutput />
+        </vs-col>
       </vs-row>
     </div>
     <Footer />
