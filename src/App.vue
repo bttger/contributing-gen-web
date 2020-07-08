@@ -3,10 +3,10 @@
     <Header />
     <div class="center grid">
       <vs-row>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" lg="6" sm="6" xs="12">
           <Configurator />
         </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+        <vs-col vs-type="flex" vs-justify="center" vs-align="center" lg="6" sm="6" xs="12">
           <MarkdownOutput />
         </vs-col>
       </vs-row>
@@ -57,10 +57,20 @@ export default {
       codeOfConductMarkdown: ""
     };
   },
+  computed: {
+    compileContributing() {
+      return dot.template(this.contributingTemplate);
+    },
+    compileCodeOfConduct() {
+      return dot.template(this.codeOfConductTemplate);
+    }
+  },
   methods: {
     generate() {
-      const contributingCompiled = dot.template(this.contributingTemplate);
-      this.contributingMarkdown = contributingCompiled(this.specs);
+      const contributingCompiled = this.compileContributing();
+      const codeOfConductCompiled = this.compileCodeOfConduct();
+      this.contributingMarkdown = this.specs.contributing.generate ? contributingCompiled(this.specs) : "";
+      this.codeOfConductMarkdown = this.specs.codeOfConduct.generate ? codeOfConductCompiled(this.specs) : "";
     }
   }
 };
