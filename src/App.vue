@@ -18,6 +18,7 @@ import MarkdownOutput from "@/components/MarkdownOutput.vue";
 
 import dot from "dot/doT";
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
+import codeOfConductTemplate from "raw-loader!contributing-gen/templates/codeOfConduct.dot";
 dot.templateSettings.strip = false;
 
 export default {
@@ -47,7 +48,9 @@ export default {
         }
       },
       contributingTemplate: contributingTemplate,
-      contributingMarkdown: ""
+      codeOfConductTemplate: codeOfConductTemplate,
+      contributingMarkdown: "",
+      codeOfConductMarkdown: ""
     };
   },
   methods: {

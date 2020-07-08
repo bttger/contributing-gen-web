@@ -1,12 +1,17 @@
 <template>
   <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
-      This is the output area
+      <vue-markdown>i am a ~~tast~~ **test**.</vue-markdown>
   </vs-col>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
   name: "MarkdownOutput",
+  components: {
+      VueMarkdown
+  }
 };
 </script>
 
