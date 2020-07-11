@@ -3,10 +3,10 @@
     <Header />
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 col-lg-6 col-xl-4 pr-auto pr-lg-0">
+        <div class="col-12 col-lg-6 col-xl-5 pr-auto pr-lg-0 mb-3">
           <Configurator />
         </div>
-        <div class="col-12 col-lg-6 col-xl-8">
+        <div class="col-12 col-lg-6 col-xl-7">
           <MarkdownOutput />
         </div>
       </div>
@@ -39,7 +39,7 @@ export default {
           name: "Our Cool Project",
           slug: "our-cool-project",
           repoUrl: "https://github.com/user/slug/",
-          docsUrl: "https://github.com/user/slug/blob/master/README.md"
+          docsUrl: "https://docs.our-cool-project.io/"
         },
         contributing: {
           generate: true,
@@ -47,7 +47,7 @@ export default {
         },
         codeOfConduct: {
           generate: true,
-          enforcementEmail: "email@example.com",
+          enforcementEmail: "contact@example.com",
           enforcementGuidelines: false
         }
       },
@@ -86,6 +86,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #d6d6d6;
 }
 </style>
