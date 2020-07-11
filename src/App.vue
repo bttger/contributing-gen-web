@@ -1,15 +1,9 @@
 <template>
   <div id="app">
     <Header />
-    <div class="center grid">
-      <vs-row>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" lg="6" sm="6" xs="12">
-          <Configurator />
-        </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" lg="6" sm="6" xs="12">
-          <MarkdownOutput />
-        </vs-col>
-      </vs-row>
+    <div>
+      <Configurator />
+      <MarkdownOutput />
     </div>
     <Footer />
   </div>
@@ -69,8 +63,12 @@ export default {
     generate() {
       const contributingCompiled = this.compileContributing();
       const codeOfConductCompiled = this.compileCodeOfConduct();
-      this.contributingMarkdown = this.specs.contributing.generate ? contributingCompiled(this.specs) : "";
-      this.codeOfConductMarkdown = this.specs.codeOfConduct.generate ? codeOfConductCompiled(this.specs) : "";
+      this.contributingMarkdown = this.specs.contributing.generate
+        ? contributingCompiled(this.specs)
+        : "";
+      this.codeOfConductMarkdown = this.specs.codeOfConduct.generate
+        ? codeOfConductCompiled(this.specs)
+        : "";
     }
   }
 };
@@ -83,6 +81,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #d6d6d6;
-  margin-top: 60px;
 }
 </style>

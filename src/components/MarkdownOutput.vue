@@ -1,7 +1,7 @@
 <template>
-  <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
+  <div>
       <vue-markdown>i am a ~~tast~~ **test**.</vue-markdown>
-  </vs-col>
+  </div>
 </template>
 
 <script>
