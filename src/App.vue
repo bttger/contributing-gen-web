@@ -1,9 +1,15 @@
 <template>
   <div id="app">
     <Header />
-    <div>
-      <Configurator />
-      <MarkdownOutput />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-lg-6 col-xl-4 pr-auto pr-lg-0">
+          <Configurator />
+        </div>
+        <div class="col-12 col-lg-6 col-xl-8">
+          <MarkdownOutput />
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
