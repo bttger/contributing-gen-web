@@ -11,7 +11,14 @@
       ></b-icon-info-circle>
     </b-col>
     <b-col cols="12" lg="8" class="d-flex">
-      <b-form-checkbox switch size="lg" class="pt-0 mt-0" v-bind:checked="value" v-on:input="$emit('input', $event)"></b-form-checkbox>
+      <b-form-checkbox
+        switch
+        :disabled="disabled"
+        size="lg"
+        class="pt-0 mt-0"
+        v-bind:checked="value"
+        v-on:input="$emit('input', $event)"
+      ></b-form-checkbox>
     </b-col>
   </b-row>
 </template>
@@ -19,7 +26,7 @@
 <script>
 export default {
   name: "InputSwitch",
-  props: ["label", "tooltip", "value"]
+  props: ["label", "tooltip", "disabled", "value"]
 };
 </script>
 

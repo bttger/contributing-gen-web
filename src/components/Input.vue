@@ -15,6 +15,7 @@
         :id="getKebabCaseLabel"
         :placeholder="placeholder"
         :type="computedType"
+        :disabled="disabled"
         trim
         v-bind:value="value"
         v-on:update="$emit('input', $event)"
@@ -26,7 +27,7 @@
 <script>
 export default {
   name: "Input",
-  props: ["label", "placeholder", "type", "tooltip", "value"],
+  props: ["label", "placeholder", "type", "tooltip", "disabled", "value"],
   computed: {
     getKebabCaseLabel() {
       return this.label
