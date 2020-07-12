@@ -1,10 +1,10 @@
 <template>
   <div id="mdOutputDiv" class="shadow rounded-lg p-2 mb-3">
-    <b-tabs pills >
+    <b-tabs pills>
       <b-tab v-for="tab in tabs" :key="tab.title" :title="tab.title">
         <InputSwitchMarkdown v-model="plainMarkdown" />
         <div class="inline text-left mt-3">
-          <vue-markdown v-show="!plainMarkdown">{{ tab.markdown }}</vue-markdown>
+          <vue-markdown v-show="!plainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
           <p v-show="plainMarkdown">{{ tab.markdown }}</p>
         </div>
       </b-tab>

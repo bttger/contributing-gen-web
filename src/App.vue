@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-lg-6 col-xl-5 pr-auto pr-lg-0 mb-3">
-          <Configurator />
+          <Configurator @generate="generate($event)" />
         </div>
         <div class="col-12 col-lg-6 col-xl-7">
           <MarkdownOutput :tabs="markdownOutput" />
@@ -35,25 +35,8 @@ export default {
   },
   data() {
     return {
-      specs: {
-        project: {
-          name: "Our Cool Project",
-          slug: "our-cool-project",
-          repoUrl: "https://github.com/user/slug/",
-          docsUrl: "https://docs.our-cool-project.io/"
-        },
-        contributing: {
-          generate: true,
-          emailSensitiveBugs: "security@example.com"
-        },
-        codeOfConduct: {
-          generate: true,
-          enforcementEmail: "contact@example.com",
-          enforcementGuidelines: false
-        }
-      },
-      contributingTemplate: contributingTemplate,
-      codeOfConductTemplate: codeOfConductTemplate,
+      contributingCompiled: dot.template(contributingTemplate),
+      codeOfConductCompiled: dot.template(codeOfConductTemplate),
       markdownOutput: [
         {
           title: "Welcome",
@@ -62,24 +45,26 @@ export default {
       ]
     };
   },
-  computed: {
-    compileContributing() {
-      return dot.template(this.contributingTemplate);
-    },
-    compileCodeOfConduct() {
-      return dot.template(this.codeOfConductTemplate);
-    }
-  },
   methods: {
-    generate() {
-      const contributingCompiled = this.compileContributing();
-      const codeOfConductCompiled = this.compileCodeOfConduct();
-      this.contributingMarkdown = this.specs.contributing.generate
-        ? contributingCompiled(this.specs)
-        : "";
-      this.codeOfConductMarkdown = this.specs.codeOfConduct.generate
-        ? codeOfConductCompiled(this.specs)
-        : "";
+    generate(specs) {
+      this.markdownOutput = [];
+      
+      if (specs.contributing.generate) {
+        this.markdownOutput.push({
+          title: "CONTRIBUTING.md",
+          markdown: specs.contributing.generate
+            ? this.contributingCompiled(specs)
+            : ""
+        });
+      }
+      if (specs.codeOfConduct.generate) {
+        this.markdownOutput.push({
+          title: "CODE_OF_CONDUCT.md",
+          markdown: specs.codeOfConduct.generate
+            ? this.codeOfConductCompiled(specs)
+            : ""
+        });
+      }
     }
   }
 };
