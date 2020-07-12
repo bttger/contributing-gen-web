@@ -1,5 +1,5 @@
 <template>
-  <div class="shadow rounded-lg p-2 mb-3">
+  <div id="mdOutputDiv" class="shadow rounded-lg p-2 mb-3">
     <b-tabs pills small>
       <b-tab title="CONTRIBUTING.md" active>
         <div class="float-right">
@@ -61,7 +61,7 @@ export default {
 </script>
 
 <style scoped>
-div {
+#mdOutputDiv {
   background-color: var(--light);
 }
 .custom-switch {
