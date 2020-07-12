@@ -7,7 +7,7 @@
           <Configurator />
         </div>
         <div class="col-12 col-lg-6 col-xl-7">
-          <MarkdownOutput contributingMarkdown="This is a **test**." codeOfConductMarkdown="This is a second **test** for the COC." />
+          <MarkdownOutput :tabs="markdownOutput" />
         </div>
       </div>
     </div>
@@ -23,6 +23,7 @@ import MarkdownOutput from "@/components/MarkdownOutput.vue";
 import dot from "dot/doT";
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
 import codeOfConductTemplate from "raw-loader!contributing-gen/templates/codeOfConduct.dot";
+import welcomeMessage from "raw-loader!./assets/welcomeMessage.md";
 dot.templateSettings.strip = false;
 
 export default {
@@ -53,8 +54,12 @@ export default {
       },
       contributingTemplate: contributingTemplate,
       codeOfConductTemplate: codeOfConductTemplate,
-      contributingMarkdown: "",
-      codeOfConductMarkdown: ""
+      markdownOutput: [
+        {
+          title: "Welcome",
+          markdown: welcomeMessage
+        }
+      ]
     };
   },
   computed: {
