@@ -1,7 +1,6 @@
 <template>
   <b-row class="my-3">
     <b-col cols="12" lg="4" class="d-flex pr-0">
-      <label class="my-0">{{ label }}</label>
       <b-row align-v="center">
         <b-col cols="12">
           <label class="my-0">{{ label }}</label>
