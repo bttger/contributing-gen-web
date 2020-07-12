@@ -1,5 +1,5 @@
 <template>
-  <div id="configurator" class="shadow-sm rounded-lg p-2">
+  <div id="configurator" class="shadow rounded-lg p-2">
     <div id="buttons" class="d-flex flex-row-reverse pb-2 border-bottom">
       <b-button
         class="sm primary-button"

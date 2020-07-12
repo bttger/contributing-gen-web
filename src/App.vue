@@ -7,7 +7,7 @@
           <Configurator />
         </div>
         <div class="col-12 col-lg-6 col-xl-7">
-          <MarkdownOutput />
+          <MarkdownOutput contributingMarkdown="This is a **test**." codeOfConductMarkdown="This is a second **test** for the COC." />
         </div>
       </div>
     </div>
