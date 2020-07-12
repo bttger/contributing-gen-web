@@ -5,7 +5,7 @@ Encourage people to contribute to your project with [your own contribution guide
 
 ## Contribute
 
-I am very grateful if you have a little time and can help the project. You can either help here in this repository to make the frontend better, or you can improve the templates in the [contributing-gen repository]() to improve the templates. Just create a pull request or an issue with suggestions.
+I am very grateful if you have a little time and can help the project. You can either help here in this repository to make the frontend better, or you can improve the templates in the [contributing-gen repository](). Just create a pull request or an issue with suggestions.
 
 ### Setting up this Vue.js project
 Run the following commands in your terminal.

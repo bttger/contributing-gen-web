@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <Header />
-    <div class="center grid">
-      <vs-row>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
-          <Configurator />
-        </vs-col>
-        <vs-col vs-type="flex" vs-justify="center" vs-align="center" w="6">
-          <MarkdownOutput />
-        </vs-col>
-      </vs-row>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-lg-6 col-xl-5 pr-auto pr-lg-0 mb-3">
+          <Configurator @generate="generate($event)" />
+        </div>
+        <div class="col-12 col-lg-6 col-xl-7">
+          <MarkdownOutput :tabs="markdownOutput" />
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -23,6 +23,7 @@ import MarkdownOutput from "@/components/MarkdownOutput.vue";
 import dot from "dot/doT";
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
 import codeOfConductTemplate from "raw-loader!contributing-gen/templates/codeOfConduct.dot";
+import welcomeMessage from "raw-loader!./assets/welcomeMessage.md";
 dot.templateSettings.strip = false;
 
 export default {
@@ -34,33 +35,36 @@ export default {
   },
   data() {
     return {
-      specs: {
-        project: {
-          name: "Our Cool Project",
-          slug: "our-cool-project",
-          repoUrl: "https://github.com/user/slug/",
-          docsUrl: "https://github.com/user/slug/blob/master/README.md"
-        },
-        contributing: {
-          generate: true,
-          emailSensitiveBugs: "security@example.com"
-        },
-        codeOfConduct: {
-          generate: true,
-          enforcementEmail: "email@example.com",
-          enforcementGuidelines: false
+      contributingCompiled: dot.template(contributingTemplate),
+      codeOfConductCompiled: dot.template(codeOfConductTemplate),
+      markdownOutput: [
+        {
+          title: "Welcome",
+          markdown: welcomeMessage
         }
-      },
-      contributingTemplate: contributingTemplate,
-      codeOfConductTemplate: codeOfConductTemplate,
-      contributingMarkdown: "",
-      codeOfConductMarkdown: ""
+      ]
     };
   },
   methods: {
-    generate() {
-      const contributingCompiled = dot.template(this.contributingTemplate);
-      this.contributingMarkdown = contributingCompiled(this.specs);
+    generate(specs) {
+      this.markdownOutput = [];
+      
+      if (specs.contributing.generate) {
+        this.markdownOutput.push({
+          title: "CONTRIBUTING.md",
+          markdown: specs.contributing.generate
+            ? this.contributingCompiled(specs)
+            : ""
+        });
+      }
+      if (specs.codeOfConduct.generate) {
+        this.markdownOutput.push({
+          title: "CODE_OF_CONDUCT.md",
+          markdown: specs.codeOfConduct.generate
+            ? this.codeOfConductCompiled(specs)
+            : ""
+        });
+      }
     }
   }
 };
@@ -72,7 +76,5 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #d6d6d6;
-  margin-top: 60px;
 }
 </style>

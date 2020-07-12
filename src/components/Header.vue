@@ -1,33 +1,42 @@
 <template>
-  <div class="center navbar">
-      <vs-navbar center-collapsed :dark=true>
-        <template #left>
-          <img src="/logo.png" alt="">
-          <h4>contributing-gen</h4>
-        </template>
-        <template #right>
-          <vs-button flat active @click="openGithubRepo">Contribute</vs-button>
-        </template>
-      </vs-navbar>
-    </div>
+  <div class="shadow mb-3">
+    <b-navbar toggleable="lg" type="light" variant="light">
+      <b-navbar-brand href="#">
+        <img id="logo" src="/logo.png" class="d-inline-block align-top" alt="contributing-gen" />
+        Contributing-Gen
+      </b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item href="https://github.com/bttger/contributing-gen">Improve the Template</b-nav-item>
+        </b-navbar-nav>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item href="https://github.com/bttger/contributing-gen-web">
+            <img
+              id="github-logo"
+              src="../assets/GitHub-Mark-64px.png"
+              class="d-inline-block align-top"
+              alt="GitHub Repository"
+            />
+          </b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
-export default {
-  methods: {
-      openGithubRepo() {
-          window.open("https://github.com/bttger/contributing-gen", "_blank")
-      }
-  }
-};
 </script>
 
 <style scoped>
-img {
-    width: 20pt;
+#logo {
+  width: 20pt;
 }
-h4 {
-    padding-left: 3pt;
-    color: #ffffff;
+#github-logo {
+  width: 16pt;
 }
 </style>
