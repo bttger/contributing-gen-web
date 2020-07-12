@@ -7,12 +7,18 @@
       <div class="d-flex">
         <h5>Project</h5>
       </div>
-      <Input label="Project Name" placeholder="Our Cool Project" v-model="projectName" />
+      <Input
+        label="Project Name"
+        placeholder="Our Cool Project"
+        v-model="projectName"
+        @input="updateSlug"
+      />
       <Input
         label="Project Slug "
         placeholder="our-cool-project"
         tooltip="The project name in kebab case"
         v-model="projectSlug"
+        @input="projectSlugManuallyChanged = true"
       />
       <Input
         label="Repository URL"
@@ -85,6 +91,15 @@ export default {
   methods: {
     generate() {
       console.log("Generate Button clicked");
+    },
+    updateSlug() {
+      if (!this.projectSlugManuallyChanged) {
+        this.projectSlug = this.projectName
+          .replace(/([A-Z])([A-Z])/g, "$1-$2")
+          .replace(/([a-z])([A-Z])/g, "$1-$2")
+          .replace(/[\s_]+/g, "-")
+          .toLowerCase();
+      }
     }
   },
   data() {
@@ -97,7 +112,8 @@ export default {
       securityEmail: "",
       generateCodeOfConduct: true,
       enforcementEmail: "",
-      enforcementGuidelines: false
+      enforcementGuidelines: false,
+      projectSlugManuallyChanged: false
     };
   }
 };
