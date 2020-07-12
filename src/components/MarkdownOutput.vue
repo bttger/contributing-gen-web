@@ -2,10 +2,10 @@
   <div id="mdOutputDiv" class="shadow rounded-lg p-2 mb-3">
     <b-tabs pills>
       <b-tab v-for="tab in tabs" :key="tab.title" :title="tab.title">
-        <InputSwitchMarkdown v-model="plainMarkdown" />
+        <InputSwitchMarkdown v-model="showPlainMarkdown" />
         <div class="inline text-left mt-3">
-          <vue-markdown v-show="!plainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
-          <p v-show="plainMarkdown">{{ tab.markdown }}</p>
+          <vue-markdown v-show="!showPlainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
+          <div v-html="tab.plainMarkdown" v-show="showPlainMarkdown"></div>
         </div>
       </b-tab>
     </b-tabs>
@@ -25,7 +25,7 @@ export default {
   props: ["tabs"],
   data() {
     return {
-      plainMarkdown: false
+      showPlainMarkdown: false
     };
   }
 };

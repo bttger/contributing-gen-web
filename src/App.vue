@@ -40,29 +40,33 @@ export default {
       markdownOutput: [
         {
           title: "Welcome",
-          markdown: welcomeMessage
+          markdown: welcomeMessage,
+          plainMarkdown: this.generatePlainMarkdownHtml(welcomeMessage)
         }
       ]
     };
   },
   methods: {
+    generatePlainMarkdownHtml(markdown) {
+      return markdown.replace(/\n/g, "<br>")
+    },
     generate(specs) {
       this.markdownOutput = [];
       
       if (specs.contributing.generate) {
+        let markdown = this.contributingCompiled(specs);
         this.markdownOutput.push({
           title: "CONTRIBUTING.md",
-          markdown: specs.contributing.generate
-            ? this.contributingCompiled(specs)
-            : ""
+          markdown: markdown,
+          plainMarkdown: this.generatePlainMarkdownHtml(markdown)
         });
       }
       if (specs.codeOfConduct.generate) {
+        let markdown = this.codeOfConductCompiled(specs);
         this.markdownOutput.push({
           title: "CODE_OF_CONDUCT.md",
-          markdown: specs.codeOfConduct.generate
-            ? this.codeOfConductCompiled(specs)
-            : ""
+          markdown: markdown,
+          plainMarkdown: this.generatePlainMarkdownHtml(markdown)
         });
       }
     }
