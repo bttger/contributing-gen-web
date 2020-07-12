@@ -1,14 +1,17 @@
 <template>
   <b-row class="my-3" align-v="center">
     <b-col cols="12" lg="4" class="d-flex pr-0">
-      <label class="my-0" :for="getKebabCaseLabel">{{ label }}</label>
-      <b-icon-info-circle
-        v-show="tooltip"
-        shift-h="2"
-        shift-v="2"
-        v-b-tooltip.hover
-        :title="tooltip"
-      ></b-icon-info-circle>
+      <b-row align-v="center">
+        <b-col cols="12">
+          <label class="my-0" :for="getKebabCaseLabel">{{ label }}</label>
+          <b-icon-info-circle
+              class="ml-1"
+              v-show="tooltip"
+              v-b-tooltip.hover
+              :title="tooltip"
+          ></b-icon-info-circle>
+        </b-col>
+      </b-row>
     </b-col>
     <b-col cols="12" lg="8">
       <b-form-input
