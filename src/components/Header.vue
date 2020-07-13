@@ -2,7 +2,7 @@
   <div class="shadow mb-3">
     <b-navbar toggleable="lg" type="light" variant="light">
       <b-navbar-brand href="#">
-        <img id="logo" src="/logo.png" class="d-inline-block align-top" alt="contributing-gen" />
+        <img id="logo" src="../assets/logo.png" class="d-inline-block align-top" />
         Contributing-Gen
       </b-navbar-brand>
 
