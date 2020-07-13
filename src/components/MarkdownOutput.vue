@@ -9,6 +9,7 @@
             pill
             class="ml-1 py-0 px-2"
             @click.stop="clickDownload(tab.title, tab.markdown)"
+            v-if="!tab.noDownloadButton"
           >
             <b-icon-download class="my-0 mx-0"></b-icon-download>
           </b-button>
