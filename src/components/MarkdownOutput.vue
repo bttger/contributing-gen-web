@@ -4,7 +4,7 @@
       <b-tab v-for="tab in tabs" :key="tab.title">
         <template v-slot:title>
           {{ tab.title }}
-          <b-button pill class="ml-2" @click.prevent="clickDownload($event, tab.title, tab.markdown)">
+          <b-button v-if="!tab.noDownloadButton" pill class="ml-2" @click.prevent="clickDownload($event, tab.title, tab.markdown)">
             <b-icon icon="download"></b-icon>
           </b-button>
         </template>

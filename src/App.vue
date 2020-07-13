@@ -17,8 +17,8 @@
 
 <script>
 import Header from "./components/Header.vue";
-import Configurator from "@/components/Configurator.vue";
-import MarkdownOutput from "@/components/MarkdownOutput.vue";
+import Configurator from "./components/Configurator.vue";
+import MarkdownOutput from "./components/MarkdownOutput.vue";
 
 import dot from "dot/doT";
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
@@ -41,7 +41,8 @@ export default {
         {
           title: "Welcome",
           markdown: welcomeMessage,
-          plainMarkdown: this.generatePlainMarkdownHtml(welcomeMessage)
+          plainMarkdown: this.generatePlainMarkdownHtml(welcomeMessage),
+          noDownloadButton: true
         }
       ]
     };
