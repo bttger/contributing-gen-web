@@ -1,13 +1,5 @@
 <template>
   <div id="configurator" class="shadow rounded-lg p-2">
-    <div id="buttons" class="d-flex flex-row-reverse pb-2 border-bottom">
-      <b-button
-        class="primary-button"
-        variant="primary"
-        :disabled="generateButtonDisabled || !(specs.contributing.generate || specs.codeOfConduct.generate)"
-        @click="generate"
-      >Generate</b-button>
-    </div>
     <div id="specification" class="pt-2">
       <div class="d-flex">
         <h5>Project</h5>
@@ -86,6 +78,14 @@
         :disabled="!specs.codeOfConduct.generate"
         @input="specificationChanged"
       />
+    </div>
+    <div id="buttons" class="d-flex flex-row-reverse pt-2 border-top">
+      <b-button
+        class="primary-button"
+        variant="primary"
+        :disabled="generateButtonDisabled || !(specs.contributing.generate || specs.codeOfConduct.generate)"
+        @click="generate"
+      >Generate</b-button>
     </div>
   </div>
 </template>
