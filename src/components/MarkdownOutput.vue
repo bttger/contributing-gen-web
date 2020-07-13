@@ -4,8 +4,13 @@
       <b-tab v-for="tab in tabs" :key="tab.title">
         <template v-slot:title>
           {{ tab.title }}
-          <b-button pill class="ml-2" @click.prevent="clickDownload($event, tab.title, tab.markdown)">
-            <b-icon icon="download"></b-icon>
+          <b-button
+            size="sm"
+            pill
+            class="ml-1 py-0 px-2"
+            @click.stop="clickDownload(tab.title, tab.markdown)"
+          >
+            <b-icon-download class="my-0 mx-0"></b-icon-download>
           </b-button>
         </template>
         <InputSwitchMarkdown v-model="showPlainMarkdown" />
@@ -35,15 +40,15 @@ export default {
     };
   },
   methods: {
-    clickDownload(event, title, content) {
-      event.stopPropagation();
-
-      const blob = new Blob([content], { type: 'text/markdown; charset=UTF-8' })
-      const link = document.createElement('a')
-      link.href = URL.createObjectURL(blob)
-      link.download = title
-      link.click()
-      URL.revokeObjectURL(link.href)
+    clickDownload(title, content) {
+      const blob = new Blob([content], {
+        type: "text/markdown; charset=UTF-8"
+      });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = title;
+      link.click();
+      URL.revokeObjectURL(link.href);
     }
   }
 };

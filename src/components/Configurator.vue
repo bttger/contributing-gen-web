@@ -2,7 +2,7 @@
   <div id="configurator" class="shadow rounded-lg p-2">
     <div id="buttons" class="d-flex flex-row-reverse pb-2 border-bottom">
       <b-button
-        class="sm primary-button"
+        class="primary-button"
         variant="primary"
         :disabled="generateButtonDisabled || !(specs.contributing.generate || specs.codeOfConduct.generate)"
         @click="generate"
@@ -138,7 +138,7 @@ export default {
         }
       },
       projectSlugManuallyChanged: false,
-      generateButtonDisabled: true,
+      generateButtonDisabled: true
     };
   }
 };
