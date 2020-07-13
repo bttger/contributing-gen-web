@@ -1,6 +1,10 @@
 <template>
   <div id="configurator" class="shadow rounded-lg p-2">
-    <div id="buttons" class="d-flex flex-row-reverse pb-2 border-bottom">
+    <div
+      v-if="showGenerateButtonAtTop()"
+      id="buttons"
+      class="d-flex flex-row-reverse pb-2 border-bottom"
+    >
       <b-button
         class="primary-button"
         variant="primary"
@@ -87,6 +91,18 @@
         @input="specificationChanged"
       />
     </div>
+    <div
+      v-if="!showGenerateButtonAtTop()"
+      id="buttons"
+      class="d-flex flex-row-reverse pt-2 border-top"
+    >
+      <b-button
+        class="primary-button"
+        variant="primary"
+        :disabled="generateButtonDisabled || !(specs.contributing.generate || specs.codeOfConduct.generate)"
+        @click="generate"
+      >Generate</b-button>
+    </div>
   </div>
 </template>
 
@@ -116,6 +132,12 @@ export default {
     },
     specificationChanged() {
       this.generateButtonDisabled = false;
+    },
+    showGenerateButtonAtTop() {
+      return this.screenWidth >= 992;
+    },
+    onResize() {
+      this.screenWidth = window.screen.width;
     }
   },
   data() {
@@ -138,8 +160,17 @@ export default {
         }
       },
       projectSlugManuallyChanged: false,
-      generateButtonDisabled: true
+      generateButtonDisabled: true,
+      screenWidth: window.screen.width
     };
+  },
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   }
 };
 </script>
