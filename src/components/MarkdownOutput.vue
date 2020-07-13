@@ -17,7 +17,7 @@
         <InputSwitchMarkdown v-model="showPlainMarkdown" />
         <div class="inline text-left mt-3">
           <vue-markdown v-show="!showPlainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
-          <div v-html="tab.plainMarkdown" v-show="showPlainMarkdown"></div>
+          <div v-html="generatePlainMarkdownHtml(tab.markdown)" v-show="showPlainMarkdown"></div>
         </div>
       </b-tab>
     </b-tabs>
@@ -41,6 +41,9 @@ export default {
     };
   },
   methods: {
+    generatePlainMarkdownHtml(markdown) {
+      return markdown.replace(/\n/g, "<br>")
+    },
     clickDownload(title, content) {
       const blob = new Blob([content], {
         type: "text/markdown; charset=UTF-8"

@@ -41,16 +41,12 @@ export default {
         {
           title: "Welcome",
           markdown: welcomeMessage,
-          plainMarkdown: this.generatePlainMarkdownHtml(welcomeMessage),
           noDownloadButton: true
         }
       ]
     };
   },
   methods: {
-    generatePlainMarkdownHtml(markdown) {
-      return markdown.replace(/\n/g, "<br>")
-    },
     generate(specs) {
       this.markdownOutput = [];
       
@@ -59,7 +55,6 @@ export default {
         this.markdownOutput.push({
           title: "CONTRIBUTING.md",
           markdown: markdown,
-          plainMarkdown: this.generatePlainMarkdownHtml(markdown)
         });
       }
       if (specs.codeOfConduct.generate) {
@@ -67,7 +62,6 @@ export default {
         this.markdownOutput.push({
           title: "CODE_OF_CONDUCT.md",
           markdown: markdown,
-          plainMarkdown: this.generatePlainMarkdownHtml(markdown)
         });
       }
     }
