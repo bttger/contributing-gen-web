@@ -1,5 +1,5 @@
 ## Welcome to contributing-gen 🎉
 
-Hello to this awesome tool to generate a guide 📃 on how to contribute to your project!
+Easily generate a contribution guide 📃 to to communicate how people can get involved in your project!
 
 Hopefully it will encourage you and others to contribute to open source projects. 😍

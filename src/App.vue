@@ -49,20 +49,33 @@ export default {
   methods: {
     generate(specs) {
       this.markdownOutput = [];
-      
-      if (specs.contributing.generate) {
-        let markdown = this.contributingCompiled(specs);
+
+      if (
+        !specs.project.name ||
+        !(specs.contributing.generate || specs.codeOfConduct.generate)
+      ) {
+        // If the specs are cleaned by the user, show the welcome message again
         this.markdownOutput.push({
-          title: "CONTRIBUTING.md",
-          markdown: markdown,
+          title: "Welcome",
+          markdown: welcomeMessage,
+          noDownloadButton: true
         });
-      }
-      if (specs.codeOfConduct.generate) {
-        let markdown = this.codeOfConductCompiled(specs);
-        this.markdownOutput.push({
-          title: "CODE_OF_CONDUCT.md",
-          markdown: markdown,
-        });
+      } else {
+        // Otherwise if the user made input, show the generated files
+        if (specs.contributing.generate) {
+          let markdown = this.contributingCompiled(specs);
+          this.markdownOutput.push({
+            title: "CONTRIBUTING.md",
+            markdown: markdown
+          });
+        }
+        if (specs.codeOfConduct.generate) {
+          let markdown = this.codeOfConductCompiled(specs);
+          this.markdownOutput.push({
+            title: "CODE_OF_CONDUCT.md",
+            markdown: markdown
+          });
+        }
       }
     }
   }
