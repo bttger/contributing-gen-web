@@ -16,7 +16,14 @@
         </template>
         <InputSwitchMarkdown v-model="showPlainMarkdown" />
         <div class="inline text-left mt-3">
-          <vue-markdown class="markdown-body" v-show="!showPlainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
+          <vue-markdown
+              class="markdown-body"
+              :toc="true"
+              :toc-anchor-link="false"
+              v-show="!showPlainMarkdown"
+              v-bind:source="tab.markdown">
+            {{ tab.markdown }}
+          </vue-markdown>
           <div v-html="generatePlainMarkdownHtml(tab.markdown)" v-show="showPlainMarkdown"></div>
         </div>
       </b-tab>
