@@ -2,7 +2,7 @@
   <b-row class="my-3">
     <b-col cols="12" lg="4" class="d-flex pr-0">
       <b-row align-v="center">
-        <b-col cols="12">
+        <b-col cols="12" class="pr-2">
           <label class="my-0">{{ label }}</label>
           <b-icon-info-circle
               class="ml-1"

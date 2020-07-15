@@ -1,5 +1,5 @@
 <template>
-  <div id="configurator" class="shadow rounded-lg pt-3 px-3 pb-2">
+  <div id="configurator" class="shadow rounded-lg pt-3 px-3 pb-1">
     <div class="d-flex">
       <h5>Project</h5>
     </div>
