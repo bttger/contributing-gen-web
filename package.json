@@ -12,6 +12,7 @@
     "bootstrap-vue": "^2.15.0",
     "contributing-gen": "^0.1.0",
     "core-js": "^3.6.5",
+    "github-markdown-css": "^4.0.0",
     "vue": "^2.6.11",
     "vue-markdown": "^2.2.4"
   },
