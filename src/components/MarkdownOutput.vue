@@ -20,6 +20,7 @@
               class="markdown-body"
               :toc="true"
               :toc-anchor-link="false"
+              :breaks="false"
               v-show="!showPlainMarkdown"
               v-bind:source="tab.markdown">
             {{ tab.markdown }}
