@@ -1,5 +1,5 @@
 <template>
-  <div id="mdOutputDiv" class="shadow rounded-lg p-2 mb-3">
+  <div id="mdOutputDiv" class="shadow rounded-lg p-3 mb-3">
     <b-tabs pills>
       <b-tab v-for="tab in tabs" :key="tab.title">
         <template v-slot:title>
@@ -16,7 +16,14 @@
         </template>
         <InputSwitchMarkdown v-model="showPlainMarkdown" />
         <div class="inline text-left mt-3">
-          <vue-markdown v-show="!showPlainMarkdown" v-bind:source="tab.markdown">{{ tab.markdown }}</vue-markdown>
+          <vue-markdown
+              class="markdown-body"
+              :toc="true"
+              :toc-anchor-link="false"
+              v-show="!showPlainMarkdown"
+              v-bind:source="tab.markdown">
+            {{ tab.markdown }}
+          </vue-markdown>
           <div v-html="generatePlainMarkdownHtml(tab.markdown)" v-show="showPlainMarkdown"></div>
         </div>
       </b-tab>
