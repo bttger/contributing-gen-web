@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     generatePlainMarkdownHtml(markdown) {
-      return markdown.replace(/\n/g, "<br>")
+      return markdown.replace(/\n/g, "<br>").replace(/<!--/g, "<code>&lt;!--").replace(/-->/g, "--&gt;</code>")
     },
     clickDownload(title, content) {
       const blob = new Blob([content], {
