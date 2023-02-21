@@ -5,27 +5,24 @@
     </div>
     <Input
       label="Project Name"
-      placeholder="Our Cool Project"
+      placeholder="XYZ"
       v-model="specs.project.name"
-      @input="updateSlug()"
     />
     <Input
-      label="Project Slug "
-      placeholder="our-cool-project"
-      tooltip="The project name in kebab case"
-      v-model="specs.project.slug"
-      @input="projectSlugManuallyChanged = true"
+      label="Default Branch"
+      placeholder="main"
+      v-model="specs.project.defaultBranch"
     />
     <Input
       label="Repository URL"
-      placeholder="https://github.com/user/slug/"
+      placeholder="https://github.com/user/project-slug"
       type="url"
       tooltip="The URL of your Git repository"
       v-model="specs.project.repoUrl"
     />
     <Input
       label="Documentation URL"
-      placeholder="https://docs.our-cool-project.io/"
+      placeholder="https://docs.xyz-project.io"
       type="url"
       tooltip="The URL of your documentation"
       v-model="specs.project.docsUrl"
@@ -87,15 +84,6 @@ export default {
     generate() {
       this.$emit("generate", this.specs);
     },
-    updateSlug() {
-      if (!this.projectSlugManuallyChanged) {
-        this.specs.project.slug = this.specs.project.name
-          .replace(/([A-Z])([A-Z])/g, "$1-$2")
-          .replace(/([a-z])([A-Z])/g, "$1-$2")
-          .replace(/[\s_]+/g, "-")
-          .toLowerCase();
-      }
-    }
   },
   watch: {
     specs: {
@@ -112,7 +100,7 @@ export default {
       specs: {
         project: {
           name: "",
-          slug: "",
+          defaultBranch: "",
           repoUrl: "",
           docsUrl: ""
         },

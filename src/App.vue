@@ -20,11 +20,10 @@ import Header from "./components/Header.vue";
 import Configurator from "./components/Configurator.vue";
 import MarkdownOutput from "./components/MarkdownOutput.vue";
 
-import dot from "dot/doT";
+import { ContributingGen } from "contributing-gen"
 import contributingTemplate from "raw-loader!contributing-gen/templates/contributing.dot";
 import codeOfConductTemplate from "raw-loader!contributing-gen/templates/codeOfConduct.dot";
 import welcomeMessage from "raw-loader!./assets/welcomeMessage.md";
-dot.templateSettings.strip = false;
 
 export default {
   name: "App",
@@ -35,8 +34,7 @@ export default {
   },
   data() {
     return {
-      contributingCompiled: dot.template(contributingTemplate),
-      codeOfConductCompiled: dot.template(codeOfConductTemplate),
+      contributingGen: new ContributingGen(contributingTemplate, codeOfConductTemplate),
       markdownOutput: [
         {
           title: "Welcome",
@@ -61,16 +59,16 @@ export default {
           noDownloadButton: true
         });
       } else {
-        // Otherwise if the user made input, show the generated files
+        // Otherwise if the user made inputs, generate the files
         if (specs.contributing.generate) {
-          let markdown = this.contributingCompiled(specs);
+          let markdown = this.contributingGen.generateContributing(specs);
           this.markdownOutput.push({
             title: "CONTRIBUTING.md",
             markdown: markdown
           });
         }
         if (specs.codeOfConduct.generate) {
-          let markdown = this.codeOfConductCompiled(specs);
+          let markdown = this.contributingGen.generateCodeOfConduct(specs);
           this.markdownOutput.push({
             title: "CODE_OF_CONDUCT.md",
             markdown: markdown
