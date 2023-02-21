@@ -13,7 +13,7 @@ jobs:
       - name: Build
         run: |
           npm ci
-          npm run build
+          NODE_OPTIONS=--openssl-legacy-provider npm run build
 
       - name: Deploy to GitHub Pages
         if: success()
